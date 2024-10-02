@@ -1,0 +1,62 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Life Expectancy and Population\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "This analysis examines the relationship between life expectancy and population size across various countries and continents over time.\n"
+      ],
+      "id": "5c9cfbb4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "import pandas as pd\n",
+        "import plotly.express as px\n",
+        "\n",
+        "# Load the Gapminder dataset\n",
+        "gapminder = px.data.gapminder()\n",
+        "\n",
+        "# Create the scatter plot\n",
+        "fig = px.scatter(\n",
+        "    gapminder,\n",
+        "    x='pop',\n",
+        "    y='lifeExp',\n",
+        "    color='continent',\n",
+        "    hover_name='country',\n",
+        "    log_x=True,\n",
+        "    title='Life Expectancy vs Population',\n",
+        "    labels={\n",
+        "        'pop': 'Population (log scale)',\n",
+        "        'lifeExp': 'Life Expectancy',\n",
+        "        'continent': 'Continent'\n",
+        "    }\n",
+        ")\n",
+        "\n",
+        "fig.show()"
+      ],
+      "id": "71437da7",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\hossa\\anaconda3\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
