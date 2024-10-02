@@ -1,0 +1,33 @@
+---
+title: "Life Expectancy and Population"
+---
+
+# Life Expectancy and Population
+
+This analysis examines the relationship between life expectancy and population size across various countries and continents over time.
+
+```{python}
+#| echo: true
+import pandas as pd
+import plotly.express as px
+
+# Load the Gapminder dataset
+gapminder = px.data.gapminder()
+
+# Create the scatter plot
+fig = px.scatter(
+    gapminder,
+    x='pop',
+    y='lifeExp',
+    color='continent',
+    hover_name='country',
+    log_x=True,
+    title='Life Expectancy vs Population',
+    labels={
+        'pop': 'Population (log scale)',
+        'lifeExp': 'Life Expectancy',
+        'continent': 'Continent'
+    }
+)
+
+fig.show()

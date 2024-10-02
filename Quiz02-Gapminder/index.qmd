@@ -1,7 +1,13 @@
 ---
-title: "Quiz02-Gapminder"
+title: "Gapminder Data Analysis"
 ---
 
-This is a Quarto website.
+# Welcome to the Gapminder Data Analysis
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+The Gapminder dataset provides insights into life expectancy, GDP per capita, and population across various countries over time.
+
+## Explore the Analyses:
+
+- [Life Expectancy and GDP per Capita](life-gdp.qmd)
+- [Life Expectancy and Population](life-population.qmd)
+- [Country Analysis](country.qmd)

@@ -1,5 +1,17 @@
 {
   "about.qmd": {
     "about.html": "645eba8b"
+  },
+  "index.qmd": {
+    "index.html": "a50fd71b"
+  },
+  "life-gpd.qmd": {
+    "life-gpd.html": "038462a3"
+  },
+  "country.qmd": {
+    "country.html": "786aa1db"
+  },
+  "life-population.qmd": {
+    "life-population.html": "e5c2e8e4"
   }
 }
