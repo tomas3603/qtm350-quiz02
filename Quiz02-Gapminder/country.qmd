@@ -2,12 +2,11 @@
 title: "Country Analysis"
 ---
 
-# Country Analysis
-
 This analysis tracks changes in life expectancy, GDP per capita, and population for a specific country over time.
 
 ```{python}
 #| echo: true
+#| eval: true
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -76,3 +75,4 @@ fig.update_layout(
 )
 
 fig.show()
+```

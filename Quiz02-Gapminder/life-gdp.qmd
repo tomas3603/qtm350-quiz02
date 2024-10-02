@@ -2,8 +2,6 @@
 title: "Life Expectancy and GDP per Capita"
 ---
 
-# Life Expectancy and GDP per Capita
-
 This analysis explores the relationship between life expectancy and GDP per capita across different countries and continents over time.
 
 ```{python}
@@ -31,3 +29,4 @@ fig = px.scatter(
 )
 
 fig.show()
+```

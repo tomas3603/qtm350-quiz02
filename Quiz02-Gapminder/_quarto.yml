@@ -14,11 +14,12 @@ website:
         href: life-population.qmd
       - text: "Country Analysis"
         href: country.qmd
+      - text: "Interactive Map"
+        href: interactive-map.qmd
 
 format:
   html:
     theme: minty
-
     css: styles.css
     toc: true
 

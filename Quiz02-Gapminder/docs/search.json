@@ -4,7 +4,28 @@
     "href": "life-population.html",
     "title": "Life Expectancy and Population",
     "section": "",
-    "text": "Life Expectancy and Population\nThis analysis examines the relationship between life expectancy and population size across various countries and continents over time.\n#| echo: true import pandas as pd import plotly.express as px\n\n\nLoad the Gapminder dataset\ngapminder = px.data.gapminder()\n\n\nCreate the scatter plot\nfig = px.scatter( gapminder, x=‘pop’, y=‘lifeExp’, color=‘continent’, hover_name=‘country’, log_x=True, title=‘Life Expectancy vs Population’, labels={ ‘pop’: ‘Population (log scale)’, ‘lifeExp’: ‘Life Expectancy’, ‘continent’: ‘Continent’ } )\nfig.show()"
+    "text": "This analysis examines the relationship between life expectancy and population size across various countries and continents over time.\n\nimport pandas as pd\nimport plotly.express as px\n\n# Load the Gapminder dataset\ngapminder = px.data.gapminder()\n\n# Create the scatter plot\nfig = px.scatter(\n    gapminder,\n    x='pop',\n    y='lifeExp',\n    color='continent',\n    hover_name='country',\n    log_x=True,\n    title='Life Expectancy vs Population',\n    labels={\n        'pop': 'Population (log scale)',\n        'lifeExp': 'Life Expectancy',\n        'continent': 'Continent'\n    }\n)\n\nfig.show()"
+  },
+  {
+    "objectID": "interactive-map.html",
+    "href": "interactive-map.html",
+    "title": "Interactive Map of Life Expectancy",
+    "section": "",
+    "text": "This interactive map displays the life expectancy of countries around the world for a selected year. Use the slider to change the year and explore how life expectancy has changed over time.\n\nimport pandas as pd\nimport plotly.express as px\n\n# Load the Gapminder dataset\ngapminder = px.data.gapminder()\n\n# Create the interactive map\nfig = px.choropleth(\n    gapminder,\n    locations=\"iso_alpha\",\n    color=\"lifeExp\",\n    hover_name=\"country\",\n    animation_frame=\"year\",\n    color_continuous_scale=px.colors.sequential.Plasma,\n    labels={'lifeExp':'Life Expectancy'},\n    title=\"Global Life Expectancy Over Time\"\n)\n\nfig.update_layout(\n    geo=dict(showframe=False, showcoastlines=False),\n    margin=dict(l=0, r=0, t=50, b=0)\n)\n\nfig.show()"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "This analysis tracks changes in life expectancy, GDP per capita, and population for a specific country over time.\n\nimport pandas as pd\nimport plotly.graph_objects as go\nimport plotly.express as px\n\n# Load the Gapminder dataset\ngapminder = px.data.gapminder()\n\n# Specify the country to analyze\ncountry_name = 'India'\n\n# Filter data for the selected country\ncountry_data = gapminder[gapminder['country'] == country_name]\n\n# Create the line plots\nfig = go.Figure()\n\nfig.add_trace(go.Scatter(\n    x=country_data['year'],\n    y=country_data['lifeExp'],\n    mode='lines+markers',\n    name='Life Expectancy',\n    line=dict(color='blue')\n))\n\nfig.add_trace(go.Scatter(\n    x=country_data['year'],\n    y=country_data['gdpPercap'],\n    mode='lines+markers',\n    name='GDP per Capita',\n    yaxis='y2',\n    line=dict(color='green')\n))\n\nfig.add_trace(go.Scatter(\n    x=country_data['year'],\n    y=country_data['pop'],\n    mode='lines+markers',\n    name='Population',\n    yaxis='y3',\n    line=dict(color='red')\n))\n\n# Create axis objects\nfig.update_layout(\n    title=f'Trends Over Time for {country_name}',\n    xaxis=dict(title='Year'),\n    yaxis=dict(title='Life Expectancy', titlefont=dict(color='blue'), tickfont=dict(color='blue')),\n    yaxis2=dict(\n        title='GDP per Capita',\n        titlefont=dict(color='green'),\n        tickfont=dict(color='green'),\n        anchor='x',\n        overlaying='y',\n        side='right'\n    ),\n    yaxis3=dict(\n        title='Population',\n        titlefont=dict(color='red'),\n        tickfont=dict(color='red'),\n        anchor='free',\n        overlaying='y',\n        side='left',\n        position=0.05\n    ),\n    legend=dict(x=0.1, y=1.1, orientation='h')\n)\n\nfig.show()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
     "objectID": "index.html",
@@ -21,24 +42,10 @@
     "text": "Life Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "country.html",
-    "href": "country.html",
-    "title": "Country Analysis",
-    "section": "",
-    "text": "Country Analysis\nThis analysis tracks changes in life expectancy, GDP per capita, and population for a specific country over time.\n#| echo: true import pandas as pd import plotly.graph_objects as go import plotly.express as px\n\n\nLoad the Gapminder dataset\ngapminder = px.data.gapminder()\n\n\nSpecify the country to analyze\ncountry_name = ‘India’\n\n\nFilter data for the selected country\ncountry_data = gapminder[gapminder[‘country’] == country_name]\n\n\nCreate the line plots\nfig = go.Figure()\nfig.add_trace(go.Scatter( x=country_data[‘year’], y=country_data[‘lifeExp’], mode=‘lines+markers’, name=‘Life Expectancy’, line=dict(color=‘blue’) ))\nfig.add_trace(go.Scatter( x=country_data[‘year’], y=country_data[‘gdpPercap’], mode=‘lines+markers’, name=‘GDP per Capita’, yaxis=‘y2’, line=dict(color=‘green’) ))\nfig.add_trace(go.Scatter( x=country_data[‘year’], y=country_data[‘pop’], mode=‘lines+markers’, name=‘Population’, yaxis=‘y3’, line=dict(color=‘red’) ))\n\n\nCreate axis objects\nfig.update_layout( title=f’Trends Over Time for {country_name}‘, xaxis=dict(title=’Year’), yaxis=dict(title=‘Life Expectancy’, titlefont=dict(color=‘blue’), tickfont=dict(color=‘blue’)), yaxis2=dict( title=‘GDP per Capita’, titlefont=dict(color=‘green’), tickfont=dict(color=‘green’), anchor=‘x’, overlaying=‘y’, side=‘right’ ), yaxis3=dict( title=‘Population’, titlefont=dict(color=‘red’), tickfont=dict(color=‘red’), anchor=‘free’, overlaying=‘y’, side=‘left’, position=0.05 ), legend=dict(x=0.1, y=1.1, orientation=‘h’) )\nfig.show()"
-  },
-  {
-    "objectID": "life-gpd.html",
-    "href": "life-gpd.html",
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
     "title": "Life Expectancy and GDP per Capita",
     "section": "",
-    "text": "Life Expectancy and GDP per Capita\nThis analysis explores the relationship between life expectancy and GDP per capita across different countries and continents over time.\n#| echo: true import pandas as pd import plotly.express as px\n\n\nLoad the Gapminder dataset\ngapminder = px.data.gapminder()\n\n\nCreate the scatter plot\nfig = px.scatter( gapminder, x=‘gdpPercap’, y=‘lifeExp’, color=‘continent’, hover_name=‘country’, log_x=True, title=‘Life Expectancy vs GDP per Capita’, labels={ ‘gdpPercap’: ‘GDP per Capita (log scale)’, ‘lifeExp’: ‘Life Expectancy’, ‘continent’: ‘Continent’ } )\nfig.show()"
+    "text": "This analysis explores the relationship between life expectancy and GDP per capita across different countries and continents over time.\n\nimport pandas as pd\nimport plotly.express as px\n\n# Load the Gapminder dataset\ngapminder = px.data.gapminder()\n\n# Create the scatter plot\nfig = px.scatter(\n    gapminder,\n    x='gdpPercap',\n    y='lifeExp',\n    color='continent',\n    hover_name='country',\n    log_x=True,\n    title='Life Expectancy vs GDP per Capita',\n    labels={\n        'gdpPercap': 'GDP per Capita (log scale)',\n        'lifeExp': 'Life Expectancy',\n        'continent': 'Continent'\n    }\n)\n\nfig.show()"
   }
 ]

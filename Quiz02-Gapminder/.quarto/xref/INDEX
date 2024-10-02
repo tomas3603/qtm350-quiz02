@@ -13,5 +13,11 @@
   },
   "life-population.qmd": {
     "life-population.html": "e5c2e8e4"
+  },
+  "life-gdp.qmd": {
+    "life-gdp.html": "6b99d623"
+  },
+  "interactive-map.qmd": {
+    "interactive-map.html": "830940b3"
   }
 }

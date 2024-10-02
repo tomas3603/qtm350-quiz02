@@ -2,8 +2,6 @@
 title: "Life Expectancy and Population"
 ---
 
-# Life Expectancy and Population
-
 This analysis examines the relationship between life expectancy and population size across various countries and continents over time.
 
 ```{python}
@@ -31,3 +29,4 @@ fig = px.scatter(
 )
 
 fig.show()
+```

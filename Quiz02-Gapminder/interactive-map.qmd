@@ -1,0 +1,34 @@
+---
+title: "Interactive Map of Life Expectancy"
+---
+
+This interactive map displays the life expectancy of countries around the world for a selected year. Use the slider to change the year and explore how life expectancy has changed over time.
+
+```{python}
+#| echo: true
+#| warnings: false
+import pandas as pd
+import plotly.express as px
+
+# Load the Gapminder dataset
+gapminder = px.data.gapminder()
+
+# Create the interactive map
+fig = px.choropleth(
+    gapminder,
+    locations="iso_alpha",
+    color="lifeExp",
+    hover_name="country",
+    animation_frame="year",
+    color_continuous_scale=px.colors.sequential.Plasma,
+    labels={'lifeExp':'Life Expectancy'},
+    title="Global Life Expectancy Over Time"
+)
+
+fig.update_layout(
+    geo=dict(showframe=False, showcoastlines=False),
+    margin=dict(l=0, r=0, t=50, b=0)
+)
+
+fig.show()
+```
